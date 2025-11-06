@@ -1,4 +1,3 @@
-// src/App.jsx
 import React, { useState } from "react";
 import ImageSlider from "./ImageSlider";
 import ContactForm from "./ContactForm";
@@ -11,38 +10,47 @@ const BespokeGifts = () => {
     "BespokeGifts/image4.jpg",
   ];
 
-    const [isOpen, setIsOpen] = useState(false);
-  
-    const openForm = () => setIsOpen(true);
-    const closeForm = () => setIsOpen(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openForm = () => setIsOpen(true);
+  const closeForm = () => setIsOpen(false);
 
   return (
     <>
-      <h1 class="text-3xl font-serif md:text-5xl font-bold text-center mt-8 mb-4">
+      {/* ✅ Title */}
+      <h1 className="text-2xl sm:text-3xl md:text-5xl font-serif font-bold text-center mt-6 sm:mt-8 mb-4 sm:mb-6 text-gray-900">
         Bespoke Gifts
       </h1>
-      <div className="mt-4 h-auto bg-white flex items-center justify-center">
+
+      {/* ✅ Image Slider Section */}
+      <div className="mt-2 sm:mt-4 bg-white flex items-center justify-center px-2 sm:px-6 md:px-12">
         <ImageSlider images={images} />
       </div>
-      <div class="flex justify-center mt-4 mb-8">
-        <button className="px-10 py-4 bg-yellow-500 text-white font-semibold rounded-lg 
-        shadow-lg hover:bg-yellow-600 transition duration-300 cursor-pointer" onClick={openForm}>
+
+      {/* ✅ Enquire Button */}
+      <div className="flex justify-center mt-6 sm:mt-8 mb-8">
+        <button
+          onClick={openForm}
+          className="px-6 sm:px-10 py-3 sm:py-4 bg-amber-500 text-white font-semibold rounded-lg 
+          shadow-lg hover:bg-amber-600 transition duration-300 transform hover:scale-105 text-sm sm:text-base"
+        >
           ENQUIRE NOW
         </button>
       </div>
 
-            {isOpen && (
-        <div className="fixed inset-0 z-10000 flex items-center justify-center bg-black/70 backdrop-blur-sm">
-          <div className="relative bg-white rounded-2xl shadow-2xl p-8 w-[90%] max-w-3xl max-h-[90vh] overflow-y-auto">
+      {/* ✅ Modal (Contact Form Popup) */}
+      {isOpen && (
+        <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/70 backdrop-blur-sm p-4 sm:p-6">
+          <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-3xl p-4 sm:p-8 overflow-y-auto max-h-[90vh] animate-fadeIn">
             {/* ❌ Close Button */}
             <button
               onClick={closeForm}
-              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-2xl font-bold cursor-pointer"
+              className="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-2xl font-bold"
             >
               ×
             </button>
 
-            {/* 👇 Your Contact Form Component */}
+            {/* ✅ Contact Form Component */}
             <ContactForm />
           </div>
         </div>
